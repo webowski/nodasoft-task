@@ -1,0 +1,132 @@
+:root {
+	--blueLight: #7FAFF6;
+	--fontDefault: 'Roboto', sans-serif;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 16px;
+}
+
+body {
+	margin: 0;
+	background-color: #fff;
+	font-family: var(--fontDefault);
+}
+
+.wrapper {
+	max-width: 1200px;
+	min-height: 100vh;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	align-items: stretch;
+	flex-direction: column;
+	gap: 16px;
+	background-color: #C0DBD9;
+}
+
+.header {
+	padding: 30.5px 30px;
+	background-color: var(--blueLight);
+}
+
+.footer {
+	height: 100px;
+	margin-top: auto;
+	margin-bottom: 0;
+	padding: 30.5px 30px;
+	background-color: var(--blueLight);
+}
+
+.block-1 {
+	background-color: #B3F95A;
+	display: grid;
+	grid-template-columns: 33.2% 1fr 13.8%;
+	gap: 15px;
+	counter-reset: blocksCounter;
+}
+
+.block-1__item {
+	height: 198px;
+	background-color: #8AD191;
+	counter-increment: blocksCounter;
+	display: grid;
+	place-items: center;
+	font-size: 53px;
+	color: #fff;
+}
+
+.block-1__item:nth-child(4) {
+	grid-column: span 2;
+}
+
+.block-1__item:after {
+	content: counter(blocksCounter);
+}
+
+.block-2 {
+	padding: 30px;
+	display: flex;
+	gap: 30px;
+	background-color: #88B5BF;
+}
+
+.block-2__item {
+	height: 198px;
+	background-color: #0D89B0;
+	flex: 1 1 auto;
+}
+
+.button {
+	display: inline-block;
+	padding: 8px 15px;
+	border: 0 none;
+	border-radius: 5px;
+	background-color: #A5C7F9;
+	color: #fff;
+	font-size: 20px;
+	line-height: 1.15;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.popup {
+	--popupSize: 400px;
+	--duration: .4s;
+	max-width: var(--popupSize);
+	width: 100%;
+	height: var(--popupSize);
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	display: grid;
+	place-items: center;
+	font-size: 53px;
+	opacity: 0;
+	visibility: hidden;
+  transition:
+		opacity var(--duration),
+		visibility var(--duration);
+}
+
+.popup__close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+.popup:target {
+	opacity: 1;
+	visibility: visible;
+  transition: opacity var(--duration);
+}
